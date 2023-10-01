@@ -1,0 +1,146 @@
+
+#root {
+  height: 100vh;
+}
+.root-content {
+  display: flex;
+  font-family: 'Poppins',sans-serif;
+  height: 100%;
+  flex-direction: row;
+  font-family: 'Poppins',sans-serif;
+}
+:root {
+  --nav-background-color: #DCE4E5;
+  --secondary-text-color: #707c7e;
+  --primary-color: #8ACDD6;
+  --orange: rgb(238, 197, 121);
+}
+.temperature-container{
+  padding: 2rem;
+  margin: 1rem;
+  width: 100%;
+}
+.left-nav-bar {
+  background: var(--nav-background-color);
+  height: auto;
+  padding: 1rem;
+  width: fit-content;
+}
+.left-heading > h2 {
+  font-weight: 300;
+}
+.search-bar { 
+  margin: 0.3rem;
+  padding: 0.8rem;
+  /* width: fit-content; */
+  font-family: 'Poppins', sans-serif;
+  border-radius: 8px;
+  border: solid 0.8px black; 
+  &:focus{
+    border: solid 0.5px var(--primary-color);
+  }
+}
+.weather-data-container{
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.main-temp-value {
+  font-size: 3rem;
+  font-weight: 300;
+  color: var(--orange);
+  font-weight: 600;
+}
+.main-temp-value > sup{
+  font-size: 2rem; 
+  margin: 0px;
+  padding: 0px;
+  
+}
+.main-temp-value > span {
+  font-size: 1.5rem;
+}
+
+.main-temp-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.weather-icon{
+  width: 150px;
+  height: 150px;
+}
+
+.location-name{
+background: #8ACDD6;
+width: fit-content;
+color: white; 
+padding: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+border-radius: 1rem;
+}
+
+.other-temp-container{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.temp-value {
+  font-size: 15px;
+  color: var(--secondary-text-color)
+}
+table{
+  border: solid 1px var(--secondary-text-color);
+}
+td{
+  border-bottom: dotted 1px var(--secondary-text-color);
+  padding: 0.5rem; 
+}
+.temp-table{
+  color: var(--secondary-text-color);
+  border: solid 1px var(--secondary-text-color);
+  flex-grow: 0.6;
+  border-radius: 0.4rem; 
+  width: fit-content;
+  /* padding: 0.8rem; */
+  
+}
+
+.location-container {
+  color: var(--secondary-text-color);
+  display: flex;
+  justify-content: center; 
+}
+
+.temp-min-max {
+  color: var(--secondary-text-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width:600px) {
+  .root-content{
+    flex-direction: column;
+    height: auto;
+  }
+  .left-nav-bar{
+    height: fit-content;  
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+  .left-heading {
+    display: none;
+  }
+  .search-bar {
+    margin: 0px;
+  }
+}
+
