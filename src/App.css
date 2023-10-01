@@ -142,5 +142,8 @@ td{
   .search-bar {
     margin: 0px;
   }
+  .temperature-container{
+    padding: 0px;
+  }
 }
 
