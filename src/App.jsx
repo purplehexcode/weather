@@ -6,6 +6,7 @@ import './App.css'
 function App() {
   const [searchTerm,setSearchTerm] = useState('');
   const [weatherData,setWeatherData] = useState(null)
+  console.log('weather data',weatherData)
   return (
     <>
       <div className='root-content'>

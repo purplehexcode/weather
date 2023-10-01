@@ -26,6 +26,7 @@ const DataView = (params) => {
 
     const getData = async() => {
         try {
+            console.log('getting data')
             var coordinates = await getCordinates();
             console.log(coordinates)
             var data = await getWeatherData(coordinates);
@@ -41,7 +42,6 @@ const DataView = (params) => {
         return (
             <>
             <div className="weather-data-container">
-              
                     <div className="temperature-container">
                         <div className="main-temp-container">
                         
