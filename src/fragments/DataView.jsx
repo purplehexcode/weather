@@ -102,9 +102,11 @@ const DataView = (params) => {
         )
     }
     else{
+        return(
         <div>
             <p>Location Not allowed/Some Error Occured</p>
         </div>
+        )
     }
     
 }
