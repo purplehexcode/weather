@@ -28,7 +28,7 @@ const getCordinates = () => {
 const getWeatherData = ({latitude,longitude}) => {
     console.log('getting weather data')
     const api_key = 'ee101955b2befdfd16e0cf86fbcfc9d1'
-    var url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`
+    var url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${api_key}`
     const promise = axios.get(url)
     console.log('getting weather data')
     return promise.then((response)=>{
