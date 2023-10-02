@@ -1,6 +1,7 @@
 
 #root {
   height: 100vh;
+  background: linear-gradient(rgb(204, 240, 255),rgb(255, 236, 201));
 }
 .root-content {
   display: flex;
@@ -10,10 +11,10 @@
   font-family: 'Poppins',sans-serif;
 }
 :root {
-  --nav-background-color: #DCE4E5;
+  --nav-background-color: #f7f7f7;
   --secondary-text-color: #707c7e;
   --primary-color: #8ACDD6;
-  --orange: rgb(238, 197, 121);
+  --orange: rgb(255, 199, 95);
 }
 .temperature-container{
   padding: 2rem;
@@ -28,10 +29,13 @@
 }
 .left-heading > h2 {
   font-weight: 300;
+  font-weight: bold;
+  font-size: 30px;
 }
 .search-bar { 
   margin: 0.3rem;
   padding: 0.8rem;
+  width: 300px;
   /* width: fit-content; */
   font-family: 'Poppins', sans-serif;
   border-radius: 8px;
@@ -141,6 +145,15 @@ td{
 .flag-image{
   width: 4rem;
 }
+.clear-button{
+  background: transparent;
+  border: solid transparent;
+  cursor: pointer;
+}
+.clear-button>img{
+  width: 20px;
+  height: 20px;
+}
 .result-card-container{
   display: flex;
   justify-content: space-between;
@@ -149,7 +162,11 @@ td{
   padding: 0.8rem;
   cursor: pointer;
 }
-
+.search-bar-container{
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
 .country-name-container{
   color: var(--secondary-text-color);
 }
@@ -168,30 +185,46 @@ td{
   flex-wrap: wrap;
 }
 
+.about-container{
+  position: fixed;
+  bottom: 0px;
+  left:0px;
+  color: var(--secondary-text-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 0.1rem;
+}
+
+
 @media (max-width:600px) {
   .root-content{
     flex-direction: column;
     height: auto;
   }
+  .about-container{
+    width: 100%;
+  }
   .left-nav-bar{
     height: fit-content;  
-    width: auto;
     display: flex;
+    width: auto;
     justify-content: center;
   }
   .left-heading {
     display: none;
   }
+  
   .search-bar {
     margin: 0px;
     width: 300px;
+    background: white;
   }
   .temperature-container{
     padding: 0px;
   }
   .results-container{
     width: 300px;
-    min-height: fit-content;
     max-height: 300px;
     position: absolute;
     top: 70px; 

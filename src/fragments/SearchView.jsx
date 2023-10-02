@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
+import cross_icon from '../assets/cross.svg'
 import {getResults} from '../services/weather'
 import SearchBar from "../components/SearchBar"
 import ResultsView from "../components/ResultsView"
-
+import About from "../components/About"
 const SearchView = ({value,setValue,setCountry}) => {
     const [results,setResults] = useState(null)
 
@@ -25,6 +26,11 @@ const SearchView = ({value,setValue,setCountry}) => {
         
         
     }
+    const clearResults = ()=>{
+        setCountry(null)
+        setResults(null)
+        setValue('')
+    }
     useEffect(()=>{ 
         console.log('use Effect called',value)
         if(value){
@@ -44,10 +50,15 @@ const SearchView = ({value,setValue,setCountry}) => {
                 </div>
                 <div className="search-bar-container">
                     <SearchBar help="Search city/places" value={value} setValue={setValue} setData={setResults}/>
-                    
+                    {
+                        value &&
+                        <button class="clear-button" onClick={clearResults}>
+                        <img src={cross_icon}/>
+                    </button>
+                    }
                 </div>
                 <ResultsView data={results} searchValue={value} setSearch={setValue} setData={setResults} setCountry={setCountry}/>
-                
+                <About />
             </div>
             
         </>
