@@ -5,9 +5,16 @@ import Pressure from "../components/Pressure"
 import {getCordinates,getWeatherData} from '../services/weather'
 const DataView = (params) => {
     useEffect(()=>{
-        getData()
-    },[])
-
+        if(params.country){
+            console.log('getting data for',params.country)
+            console.log(params.country.latlang)
+            getData(params.country.latlang)
+        } 
+        else{
+            getData(null)
+        } 
+    },[params.country])
+ 
     const convert = (data) => {
         data.main.temp = (data.main.temp - 273.15).toFixed(2)
         data.main.temp_max = (data.main.temp_max - 273.15).toFixed(2)
@@ -28,18 +35,32 @@ const DataView = (params) => {
     }
     
 
-    const getData = async() => {
-        console.log('use effect called')
+    const getData = async(latlang) => {
+        // console.log('use effect called')
         try {
-            console.log('getting data')
-            var coordinates = await getCordinates();
-            console.log(coordinates)
-            var data = await getWeatherData(coordinates);
-            convert(data);
-            console.log(data);
-            params.setData(data);
+            // console.log('getting data')
+            if(latlang){
+                var coordinates = {
+                    latitude:latlang[0],
+                    longitude: latlang[1],
+                }
+                console.log('got cordinates',coordinates)
+                var data = await getWeatherData(coordinates)
+                convert(data)
+                params.setData(data)
+            }
+            else{
+                var coordinates = await getCordinates();
+                console.log(coordinates)
+                var data = await getWeatherData(coordinates);
+                convert(data);
+                // console.log(data);
+                params.setData(data);
+            }
+            
         } catch (error) {
             console.error("Error:", error);
+            params.setData(404)
         } 
     }
 
@@ -101,10 +122,17 @@ const DataView = (params) => {
             </div> 
         )
     }
+    else if(params.data === 404){
+        return (
+            <>
+            <p>Location Not allowed/Some Error occured</p>
+            </>
+        )
+    }
     else{
         return(
             <div>
-                <p>Location Not allowed/Some Error Occured</p>
+                <p>Fetching...</p>
             </div>
         )
     }

@@ -34,24 +34,44 @@ const getWeatherData = ({latitude,longitude}) => {
     return promise.then((response)=>{
         return response.data
     })
-    // return {
-    //     main: {
-    //         temp:400,
-    //         temp_min: 300,
-    //         temp_max: 400,
-    //         humidity: 4000,
-    //         pressure: 4002,
-    //     },
-    //     weather: [
-    //         {
-    //             icon:'04d',
-    //             description: 'clouds'
-    //         }
-    //     ]
-    // }
+}
+
+const getResults = (value) =>{
+    return new Promise((resolve,reject)=>{
+        try{
+            if(value){
+                const url = 'https://studies.cs.helsinki.fi/restcountries/api/all'
+                const promise = axios.get(url)
+                promise.then((response)=>{
+                    // console.log('country data',response.data)
+                    const data = response.data.filter((country)=>{
+                        // console.log(country.name.common)
+                        
+                        if(country.name.common.toLowerCase().includes(value.toLowerCase())){
+                            return country
+                        }   
+                    })
+                    resolve(data.map((country,index)=>{
+                        return {
+                            id:index+1,
+                            name: country.name.common,
+                            flag: country.flags.png,
+                            latlang: country.latlng,
+                        }
+                    }))
+                })
+            }
+        }
+        catch(error){
+            console.log('Error',error)
+            reject(404)
+        }
+        
+    })
 }
 
 export  {
     getCordinates,
-    getWeatherData
+    getWeatherData,
+    getResults
 }

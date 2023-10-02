@@ -5,13 +5,13 @@ import './App.css'
 
 function App() {
   const [searchTerm,setSearchTerm] = useState('');
+  const [selectedCountry,setSelectedCountry] = useState(null)
   const [weatherData,setWeatherData] = useState(null)
-  console.log('weather data',weatherData)
   return (
     <>
       <div className='root-content'>
-          <SearchView value={searchTerm} setValue={setSearchTerm}/>
-          <DataView data={weatherData} setData={setWeatherData}/>
+          <SearchView value={searchTerm} setValue={setSearchTerm} setCountry={setSelectedCountry}/>
+          <DataView data={weatherData} setData={setWeatherData} country={selectedCountry}/>
       </div>
     </>
   )

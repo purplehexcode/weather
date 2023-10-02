@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const SearchBar = (props) => {
 
     const updateValue = (event) => {
@@ -10,7 +12,7 @@ const SearchBar = (props) => {
         <input type="search" 
         placeholder={props.help} 
         className="search-bar"
-        value={props.value}
+        value={props.value?props.value.name:props.value}
         onChange={updateValue}
         />
     ) 
